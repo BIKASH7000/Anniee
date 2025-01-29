@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+body {
+    font-family: 'Pacifico', cursive;
+    text-align: center;
+    background: url('WhatsApp\ Image\ 2025-01-29\ at\ 10.25.51\ PM.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    overflow: hidden;
+    transition: background 1s ease-in-out;
+}
+
+.container {
+    margin-top: 20%;
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 10px pink;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+button {
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#yes-btn {
+    background: #ff4081;
+    color: white;
+    border-radius: 10px;
+}
+
+#yes-btn:hover {
+    background: #ff79b0;
+}
+
+#no-btn {
+    background: #757575;
+    color: white;
+    border-radius: 10px;
+}
+
+.emoji {
+    position: absolute;
+    font-size: 2rem;
+    animation: fall 2s linear infinite;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-100vh); opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0; }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+}
