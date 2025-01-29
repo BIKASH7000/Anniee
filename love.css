@@ -1,0 +1,52 @@
+body {
+    background: #181717;
+    color: white;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-top: 20px;
+    text-shadow: 2px 2px 10px pink;
+}
+
+.gallery {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.gallery img {
+    width: 200px;
+    height: 250px;
+    margin: 10px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px pink;
+    transition: transform 0.3s ease-in-out;
+}
+
+.gallery img:hover {
+    transform: scale(1.1);
+}
+
+.quote {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    color: #ffcc00;
+    text-shadow: 0 0 5px #ffcc00;
+}
+.heart {
+    position: fixed;
+    bottom: 0;
+    width: 20px;
+    height: 20px;
+    background: rgb(220, 35, 35);
+    clip-path: polygon(50% 0%, 100% 30%, 80% 100%, 50% 70%, 20% 100%, 0% 30%);
+    animation: fall 5s infinite ease-in-out;
+}
+
+@keyframes fall {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-100vh) rotate(360deg); }
+}
