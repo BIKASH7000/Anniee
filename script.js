@@ -1,5 +1,3 @@
-let noButtonClicked = false; // Track if "No" was clicked
-
 document.getElementById("yes-btn").addEventListener("click", function() {
     let question = document.getElementById("question");
     let text = "You just unlocked a surprise! ❤️";
@@ -23,43 +21,50 @@ document.getElementById("yes-btn").addEventListener("click", function() {
 
     // Spawn love emojis
     spawnEmojis("😍");
+
+    // Change background color
+    document.body.style.transition = "background 1s ease-in-out";
     document.body.style.background = "pink";
 });
 
 document.getElementById("no-btn").addEventListener("click", function() {
-    if (!noButtonClicked) {
-        let question = document.getElementById("question");
-        let text = "Are you sure? 😢";
-        let i = 0;
+    let question = document.getElementById("question");
+    let text = "Are you sure? 😢";
+    let i = 0;
 
-        // Clear existing content
-        question.innerHTML = "";
+    // Clear existing content
+    question.innerHTML = "";
 
-        // Typing effect for "Are you sure?"
-        let typing = setInterval(() => {
-            if (i < text.length) {
-                question.innerHTML += text.charAt(i);
-                i++;
-            } else {
-                clearInterval(typing);
-                noButtonClicked = true; // Enable running away effect
-            }
-        }, 100);
-
-        // Spawn crying emojis
-        spawnEmojis("😭");
-    }
+    // Typing effect for "Are you sure?"
+    let typing = setInterval(() => {
+        if (i < text.length) {
+            question.innerHTML += text.charAt(i);
+            i++;
+        } else {
+            clearInterval(typing);
+            setTimeout(() => {
+                makeYesButtonRunAway(); // Yes button runs away
+            }, 1000);
+        }
+    }, 100);
 });
 
-// Make the "No" button run away when hovered
-document.getElementById("no-btn").addEventListener("mouseenter", function() {
-    if (noButtonClicked) {
-        let noBtn = document.getElementById("no-btn");
-        noBtn.style.position = "absolute";
-        noBtn.style.left = Math.random() * (window.innerWidth - 100) + "px";
-        noBtn.style.top = Math.random() * (window.innerHeight - 50) + "px";
-    }
-});
+// Function to make "Yes" button run away
+function makeYesButtonRunAway() {
+    let yesBtn = document.getElementById("yes-btn");
+    yesBtn.style.position = "absolute";
+
+    document.getElementById("no-btn").addEventListener("click", function() {
+        window.location.href = "love.html"; // Redirect to a different page when clicking "No"
+    });
+
+    yesBtn.addEventListener("mouseover", function() {
+        let x = Math.random() * (window.innerWidth - yesBtn.clientWidth);
+        let y = Math.random() * (window.innerHeight - yesBtn.clientHeight);
+        yesBtn.style.left = `${x}px`;
+        yesBtn.style.top = `${y}px`;
+    });
+}
 
 // Function to spawn emojis
 function spawnEmojis(emoji) {
